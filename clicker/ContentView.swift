@@ -72,7 +72,8 @@ class WeatherController: UIViewController {
                    let temperature = main["temp"] as? Double,
                    let weatherArray = json["weather"] as? [[String: Any]],
                    let weatherDescription = weatherArray.first?["description"] as? String {
-                    let weatherText = "The current temperature in the city of \(city) is \(temperature)°F with \(weatherDescription)."
+                    let weatherText = "The current temperature in the city of \(city) is \(temperature)°F (\(String(format: "%.1f", self.fahrenheitToCelsius(temperature)))°C) with \(weatherDescription)."
+
                     self.updateWeatherLabel(with: weatherText)
                 } else {
                     self.updateWeatherLabel(with: "Invalid response format")
@@ -90,4 +91,14 @@ class WeatherController: UIViewController {
             self.weatherText?.wrappedValue = text
         }
     }
+    
+    func fahrenheitToCelsius(_ fahrenheit: Double) -> Double {
+        return (fahrenheit - 32) * 5/9
+    }
+}
+
+
+
+#Preview {
+    ContentView()
 }
