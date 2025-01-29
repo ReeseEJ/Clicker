@@ -43,7 +43,7 @@ struct ContentView: View {
 // Get Location From User Class
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()
-    @Published var locationString = "Location: Tap button to get location"
+    @Published var locationString = "Location: Tap button to get your ACTUAL Location! NO JOKES"
     
     override init() {
         super.init()
@@ -91,7 +91,7 @@ struct Fact: Codable {
 
 // Get Random Fact using REST API
 class FactManager: ObservableObject {
-    @Published var currentFact = "Tap button to get a random fact"
+    @Published var currentFact = "If you click you might find the world's best fact"
     
     func fetchRandomFact() {
         guard let url = URL(string: "https://uselessfacts.jsph.pl/api/v2/facts/random") else { return }
